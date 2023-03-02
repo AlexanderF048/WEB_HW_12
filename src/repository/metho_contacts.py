@@ -10,7 +10,7 @@ from src.valid_schemas import ContactPersonModel
 # ПАПКА REPOSITORY для 5 принципа солида, мы работаем с базой через функции в репозитории, наши
 # роуты не меняются в случае если база данных поменяется( с postgres Mongo например
 
-async def rep_create_contact(body: ContactPersonModel, db: Session) -> ContactPerson:
+async def rep_create_contact(body: ContactPersonModel, user: User, db: Session) -> ContactPerson:
     contact = ContactPerson(
         name=body.name,
         surname=body.surname,
@@ -18,6 +18,7 @@ async def rep_create_contact(body: ContactPersonModel, db: Session) -> ContactPe
         phone=body.phone,
         b_date=body.b_date,
         additional_info=body.additional_info,
+        user_id=user.id
     )
 
     db.add(contact)

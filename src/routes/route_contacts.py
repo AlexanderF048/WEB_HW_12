@@ -15,7 +15,7 @@ router = APIRouter(prefix='/contacts')
 @router.post("/")
 async def create_contact(body: ContactPersonModel, db: Session = Depends(get_db_func),
                          current_user: User = Depends(auth_service.get_current_user)):
-    return await metho_contacts.rep_create_contact(body, db)
+    return await metho_contacts.rep_create_contact(body, current_user, db)
 
 
 @router.get("/")
