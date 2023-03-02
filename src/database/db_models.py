@@ -20,6 +20,7 @@ class ContactPerson(Base):
     b_date = Column(Date, nullable=True, default='...No birthday date, yet...')
     additional_info = Column(String(500), nullable=True, default='...No additional information provided...')
     #for auth
+    user_id = Column('user_id', ForeignKey('Users.id', ondelete='CASCADE'), default=None)
     user = relationship('User', backref="Contacts")
 
 
