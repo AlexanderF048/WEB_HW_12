@@ -37,7 +37,7 @@ class TokenModel(BaseModel):
 class ContactPersonModel(BaseModel):
     name: str = Field(max_length=50)
     surname: str = Field(max_length=50)
-    email: str = EmailStr
+    email: EmailStr
     phone: str
     b_date: Optional[date]
     additional_info: str = Field(max_length=500)
